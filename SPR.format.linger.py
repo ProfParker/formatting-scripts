@@ -1,6 +1,6 @@
 # This script takes SPR items in excel files and formats the items for use with linger
 #
-# Original source unknown. DP June 2012
+# Original source unknown, I inherited from Sol Lago. DP June 2012
 #
 # NOTE: region names in quotes (e.g. "Region1") must be at the column headers in the excel before exporting to csv
 #
@@ -8,6 +8,8 @@
 # 1. Save each condition to a separate csv file.
 # 2. Execute: python SPR_process_items.py condA.csv condB.csv condC.sv questions.csv > formattedItems.txt
 #
+# This script is a bit picky. The last argument of the command line statement is the comprehension question file. 
+# The script assumes one question per item (i.e. same question across conditions).
 
 #!/usr/bin/python
 
@@ -100,20 +102,20 @@ for item_fn in item_fns:
   i += 1
 
 # Check input
-if not (len(labls) == len(items)):
-  sys.stderr.write("Length of labls was " + str(len(labls)) + '\n')
-  sys.stderr.write("Length of items was " + str(len(items)) + '\n')
-assert len(labls) == len(items)
-for labls_cf in labls:
-  if not (len(qs) == len(labls_cf)):
-    sys.stderr.write("Length of qs was " + str(len(qs)) + '\n')
-    sys.stderr.write("Length of labls_cf was " + str(len(labls_cf)) + '\n')
-  assert len(qs) == len(labls_cf)
-for items_cf in items:
-  if not (len(qs) == len(items_cf)):
-    sys.stderr.write("Length of qs was " + str(len(qs)) + '\n')
-    sys.stderr.write("Length of labls_cf was " + str(len(items_cf)) + '\n')
-  assert len(qs) == len(items_cf)
+# if not (len(labls) == len(items)):
+#   sys.stderr.write("Length of labls was " + str(len(labls)) + '\n')
+#   sys.stderr.write("Length of items was " + str(len(items)) + '\n')
+# assert len(labls) == len(items)
+# for labls_cf in labls:
+#   if not (len(qs) == len(labls_cf)):
+#     sys.stderr.write("Length of qs was " + str(len(qs)) + '\n')
+#     sys.stderr.write("Length of labls_cf was " + str(len(labls_cf)) + '\n')
+#   assert len(qs) == len(labls_cf)
+# for items_cf in items:
+#   if not (len(qs) == len(items_cf)):
+#     sys.stderr.write("Length of qs was " + str(len(qs)) + '\n')
+#     sys.stderr.write("Length of labls_cf was " + str(len(items_cf)) + '\n')
+#   assert len(qs) == len(items_cf)
 
 # Output
 for i_f in range(len(labls)):
@@ -123,3 +125,5 @@ for i_f in range(len(labls)):
     print labls_cf[i_l].encode("latin1")
     print ' '.join(items_cf[i_l]).encode("latin1")
     print qs[i_l].encode("latin1")
+
+
