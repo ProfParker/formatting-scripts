@@ -118,12 +118,15 @@ for item_fn in item_fns:
 #   assert len(qs) == len(items_cf)
 
 # Output
+i = 0
 for i_f in range(len(labls)):
   labls_cf = labls[i_f]
   items_cf = items[i_f]
   for i_l in range(len(labls_cf)):
     print labls_cf[i_l].encode("latin1")
     print ' '.join(items_cf[i_l]).encode("latin1")
-    print qs[i_l].encode("latin1")
-
+    #print qs[i_l].encode("latin1")
+    if i < len(qs):
+	  print qs[i].encode("latin1")
+    i +=1
 
