@@ -60,12 +60,12 @@ def tag(items, tags):
   tagged_items = []
   for i in range(len(items)):
     if items[i] != '':
-      tagged_items.append(items[i] + tags[i])
+      tagged_items.append(items[i] + tags [i])
   return tagged_items
 
   
 # main
-
+ 
 #The command line arguments (except the last) are the item file names
 item_fns = sys.argv[1:(len(sys.argv)-1)]
 # The last command line argument is the question file name
